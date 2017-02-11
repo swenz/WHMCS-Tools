@@ -17,7 +17,7 @@
     "optimize": true
   },
 
-  "version": "0.0.6",
+  "version": "0.1.0",
   "id": "BetterCorp.Tools.WHMCS",
   "title": "WHMCS-Tools",
   "description": "Simple Asynchronous WHMCS client for .NET.",

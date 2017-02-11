@@ -331,5 +331,49 @@ namespace BetterCorp.Tools.WHMCS
 
       return await base.CallOut<GetClientGroupsResponse>("GetClientGroups", kp);
     }
+
+    /// <summary>
+    /// Obtain the encrypted client password
+    /// https://developers.whmcs.com/api-reference/getclientpassword/
+    /// </summary>
+    /// <param name="userid">	The userid to obtain the password for</param>
+    /// <param name="email">	The email address to obtain the password for</param>
+    /// <returns></returns>
+    public async Task<GetClientPasswordResponse> GetClientPassword(
+      long? userid = null,
+      string email = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "userid", userid, true);
+      base.AddKeyValuePair(ref kp, "email", email, true);
+
+      if (userid == null && string.IsNullOrEmpty(email))
+        throw new ArgumentNullException("userid or email is required");
+
+      return await base.CallOut<GetClientPasswordResponse>("GetClientPassword", kp);
+    }
+
+    /// <summary>
+    /// Obtain the Clients Product Addons that match passed criteria
+    /// https://developers.whmcs.com/api-reference/getclientsaddons/
+    /// </summary>
+    /// <param name="serviceid">The service id(s) to obtain the client product addons for.</param>
+    /// <param name="clientid">The client to obtain the client product addons for</param>
+    /// <param name="addonid">The predefined addon id to obtain the client product addons for</param>
+    /// <returns></returns>
+    public async Task<GetClientsAddonsResponse> GetClientsAddons(
+      long? serviceid = null,
+      long? clientid = null,
+      long? addonid = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "serviceid", serviceid, true);
+      base.AddKeyValuePair(ref kp, "clientid", clientid, true);
+      base.AddKeyValuePair(ref kp, "addonid", addonid, true);
+
+      return await base.CallOut<GetClientsAddonsResponse>("GetClientsAddons", kp);
+    }
   }
 }

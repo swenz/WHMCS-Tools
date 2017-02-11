@@ -278,4 +278,55 @@
 
     public string separateinvoices { get; set; }
   }
+
+  public class GetClientPasswordResponse : IResponse
+  {
+    public string password { get; set; }
+  }
+
+  public class GetClientsAddonsResponse : IResponse
+  {
+    public long totalresults { get; set; }
+
+    public long serviceid { get; set; }
+
+    public long clientid { get; set; }
+
+    public List<GetClientsAddon> addons { get; set; }
+  }
+
+  public class GetClientsAddon
+  {
+    public long id { get; set; }
+
+    public long userid { get; set; }
+
+    public long orderid { get; set; }
+
+    public long serviceid { get; set; }
+
+    public long addonid { get; set; }
+
+    public string name { get; set; }
+
+    public string setupfee { get; set; }
+
+    public string recurring { get; set; }
+
+    public string billingcycle { get; set; }
+
+    public string tax { get; set; }
+
+    public string status { get; set; }
+
+    public DateTime regdate { get; set; }
+
+    public DateTime nextduedate { get; set; }
+
+    public DateTime nextinvoicedate { get; set; }
+
+    public string paymentmethod { get; set; }
+
+    public string notes { get; set; }
+  }
 }
