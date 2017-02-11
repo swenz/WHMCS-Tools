@@ -4,47 +4,43 @@
   using System.Collections.Generic;
   using System.Net;
   
-  public class AddClientResponse
+  public class AddClientResponse : IResponse
   {
-    public List<Client> client { get; set; }
+    public long clientid { get; set; }
   }
 
-  public class GetClientsResponse
+  public class GetClientsResponse : IResponse
   {
-    public string result { get; set; }
-
     public string totalresults { get; set; }
 
-    public int startnumber { get; set; }
+    public long startnumber { get; set; }
 
-    public int numreturned { get; set; }
+    public long numreturned { get; set; }
 
     public GetClientsResponseClients clients { get; set; }
   }
-  public class GetClientsResponseClients
+
+  public class GetClientsResponseClients : IResponse
   {
     public List<Client> client { get; set; }
   }
 
   public class GetClientsDetailsResponse : Client
   {
-    public string result { get; set; }
   }
 
-  public class GetClientsDetailsWithStatsResponse
+  public class GetClientsDetailsWithStatsResponse : IResponse
   {
-    public string result { get; set; }
-
     public Client client { get; set; }
 
     public ClientStats stats { get; set; }
   }
 
-  public class Client
+  public class Client : IResponse
   {
-    public int userid { get; set; }
+    public long userid { get; set; }
 
-    public int id { get; set; }
+    public long id { get; set; }
 
     public string uuid { get; set; }
 
@@ -164,11 +160,11 @@
 
     public string draftInvoicesBalance { get; set; }
 
-    public int numpaidinvoices { get; set; }
+    public long numpaidinvoices { get; set; }
 
     public string paidinvoicesamount { get; set; }
 
-    public int numunpaidinvoices { get; set; }
+    public long numunpaidinvoices { get; set; }
 
     public string unpaidinvoicesamount { get; set; }
 
@@ -176,45 +172,45 @@
 
     public string cancelledinvoicesamount { get; set; }
 
-    public int numrefundedinvoices { get; set; }
+    public long numrefundedinvoices { get; set; }
 
     public string refundedinvoicesamount { get; set; }
 
-    public int numcollectionsinvoices { get; set; }
+    public long numcollectionsinvoices { get; set; }
 
     public string collectionsinvoicesamount { get; set; }
 
-    public int productsnumactivehosting { get; set; }
+    public long productsnumactivehosting { get; set; }
 
-    public int productsnumhosting { get; set; }
+    public long productsnumhosting { get; set; }
 
-    public int productsnumactivereseller { get; set; }
+    public long productsnumactivereseller { get; set; }
 
-    public int productsnumreseller { get; set; }
+    public long productsnumreseller { get; set; }
 
-    public int productsnumactiveservers { get; set; }
+    public long productsnumactiveservers { get; set; }
 
-    public int productsnumservers { get; set; }
+    public long productsnumservers { get; set; }
 
-    public int productsnumactiveother { get; set; }
+    public long productsnumactiveother { get; set; }
 
-    public int productsnumother { get; set; }
+    public long productsnumother { get; set; }
 
-    public int productsnumactive { get; set; }
+    public long productsnumactive { get; set; }
 
-    public int productsnumtotal { get; set; }
+    public long productsnumtotal { get; set; }
 
-    public int numactivedomains { get; set; }
+    public long numactivedomains { get; set; }
 
-    public int numdomains { get; set; }
+    public long numdomains { get; set; }
 
-    public int numacceptedquotes { get; set; }
+    public long numacceptedquotes { get; set; }
 
-    public int numquotes { get; set; }
+    public long numquotes { get; set; }
 
-    public int numtickets { get; set; }
+    public long numtickets { get; set; }
 
-    public int numactivetickets { get; set; }
+    public long numactivetickets { get; set; }
 
     public string numaffiliatesignups { get; set; }
 

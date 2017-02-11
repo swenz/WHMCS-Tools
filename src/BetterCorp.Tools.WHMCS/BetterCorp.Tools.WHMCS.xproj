@@ -18,4 +18,14 @@
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.targets" Condition="'$(VSToolsPath)' != ''" />
+  
+  <Target Name="BeforeBuild" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="del &quot;$(OutputPath)Release&quot; /Q /S &amp;&amp; rmdir &quot;$(OutputPath)Release&quot; /Q /S" />
+  </Target>
+  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+    <!-- <Exec Command="$(OutputPath)..\..\..\tools\nuget.exe pack $(OutputPath)..\..\..\deploy\BetterCorp.Tools.WHMCS.nuspec -BasePath $(OutputPath) -OutputDirectory $(OutputPath)" /> -->
+    <Exec Command="dotnet pack --no-build --configuration Release" />
+    <Exec Command="del &quot;$(OutputPath)Release\*.symbols.nupkg&quot; /Q" />
+    <Exec Command="powershell.exe &quot;Invoke-Expression ('&amp; '+(Join-Path $pwd '..\..\tools\nuget.exe') + ' push ' + (Join-Path $pwd '.\bin\Release\*.nupkg') + ' -source https://api.nuget.org/v3/index.json -apikey ' + (Get-Content '.nugetapikey'))&quot;" />
+  </Target>
 </Project>

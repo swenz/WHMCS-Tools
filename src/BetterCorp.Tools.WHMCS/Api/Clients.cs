@@ -23,7 +23,7 @@ namespace BetterCorp.Tools.WHMCS
     /// <param name="postcode"></param>
     /// <param name="country">2 character ISO country code</param>
     /// <param name="phonenumber"></param>
-    /// <param name="password2"></param>
+    /// <param name="password"></param>
     /// <param name="companyname"></param>
     /// <param name="address2"></param>
     /// <param name="securityqid">Security Question ID from tbladminsecurityquestions</param>
@@ -53,7 +53,7 @@ namespace BetterCorp.Tools.WHMCS
       string postcode,
       string country,
       string phonenumber,
-      string password2,
+      string password,
       string companyname = null,
       string address2 = null,
       long? securityqid = null,
@@ -84,7 +84,7 @@ namespace BetterCorp.Tools.WHMCS
       base.AddKeyValuePair(ref kp, "postcode", postcode, false);
       base.AddKeyValuePair(ref kp, "country", country, false);
       base.AddKeyValuePair(ref kp, "phonenumber", phonenumber, false);
-      base.AddKeyValuePair(ref kp, "password2", password2, false);
+      base.AddKeyValuePair(ref kp, "password2", password, false);
 
       base.AddKeyValuePair(ref kp, "companyname", companyname, true);
       base.AddKeyValuePair(ref kp, "address2", address2, true);
@@ -176,5 +176,21 @@ namespace BetterCorp.Tools.WHMCS
 
       return await base.CallOut<GetClientsDetailsWithStatsResponse>("GetClientsDetails", kp);
     }
+
+
+    /*public async Task<AddContactResponse> AddContact(
+      long? clientid = null,
+      string email = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "clientid", clientid, true);
+      base.AddKeyValuePair(ref kp, "email", email, true);
+      base.AddKeyValuePair(ref kp, "stats", true, true);
+
+      if (clientid == null && string.IsNullOrEmpty(email)) throw new ArgumentNullException("clientid or email is required");
+
+      return await base.CallOut<GetClientsDetailsWithStatsResponse>("AddContact", kp);
+    }*/
   }
 }
