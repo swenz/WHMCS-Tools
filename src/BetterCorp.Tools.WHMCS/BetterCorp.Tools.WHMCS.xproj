@@ -20,7 +20,7 @@
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.targets" Condition="'$(VSToolsPath)' != ''" />
   
   <Target Name="BeforeBuild" Condition="'$(Configuration)' == 'Release'">
-    <Exec Command="del &quot;$(OutputPath)Release&quot; /Q /S &amp;&amp; rmdir &quot;$(OutputPath)Release&quot; /Q /S" />
+    <Exec Command="powershell.exe &quot;If (Test-Path '$(OutputPath)Release') { rm -r '$(OutputPath)Release' }&quot;" />
   </Target>
   <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
     <!-- <Exec Command="$(OutputPath)..\..\..\tools\nuget.exe pack $(OutputPath)..\..\..\deploy\BetterCorp.Tools.WHMCS.nuspec -BasePath $(OutputPath) -OutputDirectory $(OutputPath)" /> -->

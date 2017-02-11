@@ -2295,7 +2295,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BetterCorp.Tools.WHMCS/0.0.4-alpha": {
+      "BetterCorp.Tools.WHMCS/0.0.5-alpha": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
@@ -4746,7 +4746,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BetterCorp.Tools.WHMCS/0.0.4-alpha": {
+      "BetterCorp.Tools.WHMCS/0.0.5-alpha": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
         "dependencies": {
@@ -10475,7 +10475,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "BetterCorp.Tools.WHMCS/0.0.4-alpha": {
+    "BetterCorp.Tools.WHMCS/0.0.5-alpha": {
       "type": "project",
       "path": "../BetterCorp.Tools.WHMCS/project.json",
       "msbuildProject": "../BetterCorp.Tools.WHMCS/BetterCorp.Tools.WHMCS.xproj"
