@@ -329,4 +329,137 @@
 
     public string notes { get; set; }
   }
+
+  public class GetClientsDomainsResponse : IResponse
+  {
+    public long clientid { get; set; }
+
+    public long domainid { get; set; }
+
+    public long totalresults { get; set; }
+
+    public long startnumber { get; set; }
+
+    public long numreturned { get; set; }
+
+    public List<GetClientsDomain> domains { get; set; }
+  }
+
+  public class GetClientsDomain
+  {
+    public long id { get; set; }
+
+    public long userid { get; set; }
+
+    public long orderid { get; set; }
+
+    public string regtype { get; set; }
+
+    public string domainname { get; set; }
+
+    public string registrar { get; set; }
+
+    public string regperiod { get; set; }
+
+    public string firstpaymentamount { get; set; }
+
+    public string recurringamount { get; set; }
+
+    public string paymentmethod { get; set; }
+
+    public string paymentmethodname { get; set; }
+
+    public DateTime regdate { get; set; }
+
+    public DateTime expirydate { get; set; }
+
+    public DateTime nextduedate { get; set; }
+
+    public string status { get; set; }
+
+    public long subscriptionid { get; set; }
+
+    public long promoid { get; set; }
+
+    public bool dnsmanagement { get; set; }
+
+    public bool emailforwarding { get; set; }
+
+    public long idprotection { get; set; }
+
+    public bool donotrenew { get; set; }
+
+    public string notes { get; set; }
+  }
+
+  public class GetClientsProductsResponse : IResponse
+  {
+    public long clientid { get; set; }
+
+    public long serviceid { get; set; }
+
+    public long pid { get; set; }
+
+    public string domain { get; set; }
+
+    public long totalresults { get; set; }
+
+    public long startnumber { get; set; }
+
+    public long numreturned { get; set; }
+
+    public List<GetClientsProduct> products { get; set; }
+  }
+
+  public class GetClientsProduct
+  {
+    public long id { get; set; }
+    public long clientid { get; set; }
+    public long orderid { get; set; }
+    public long pid { get; set; }
+    public DateTime regdate { get; set; }
+    public string name { get; set; }
+    public string translated_name { get; set; }
+    public string groupname { get; set; }
+    public string translated_groupname { get; set; }
+    public string domain { get; set; }
+    public string dedicatedip { get; set; }
+    public long serverid { get; set; }
+    public string servername { get; set; }
+    public string serverip { get; set; }
+    public string serverhostname { get; set; }
+    public string suspensionreason { get; set; }
+    public string firstpaymentamount { get; set; }
+    public string recurringamount { get; set; }
+    public string paymentmethod { get; set; }
+    public string paymentmethodname { get; set; }
+    public string billingcycle { get; set; }
+    public DateTime nextduedate { get; set; }
+    public string status { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
+    public string subscriptionid { get; set; }
+    public long promoid { get; set; }
+    public string overideautosuspend { get; set; }
+    public DateTime overidesuspenduntil { get; set; }
+    public string ns1 { get; set; }
+    public string ns2 { get; set; }
+    public string assignedips { get; set; }
+    public string notes { get; set; }
+    public string diskusage { get; set; }
+    public string disklimit { get; set; }
+    public string bwusage { get; set; }
+    public string bwlimit { get; set; }
+    public DateTime lastupdate { get; set; }
+    public List<ClientCustomfield> customfields { get; set; }
+    public List<ProductConfigurationOption> configoptions { get; set; }
+  }
+
+  public class ProductConfigurationOption
+  {
+    public string id { get; set; }
+    public string option { get; set; }
+    public string type { get; set; }
+    public string value { get; set; }
+  }
 }
