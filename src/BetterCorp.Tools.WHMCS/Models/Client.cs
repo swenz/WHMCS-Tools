@@ -216,4 +216,66 @@
 
     public bool isAffiliate { get; set; }
   }
+
+  public class BaseContactResponse : IResponse
+  { 
+    public long contactid { get; set; }
+  }
+
+  public class BaseClientResponse : IResponse
+  { 
+    public long clientid { get; set; }
+  }
+
+  public class GetCancelledPackages : IResponse
+  {
+    public long totalresults { get; set; }
+
+    public long startnumber { get; set; }
+
+    public long numreturned { get; set; }
+
+    public List<GetCancelledPackage> packages { get; set; }
+  }
+
+  public class GetCancelledPackage : IResponse
+  {
+    public long id { get; set; }
+
+    public DateTime date { get; set; }
+
+    public long relid { get; set; }
+
+    public string reason { get; set; }
+
+    public string type { get; set; }
+
+    public DateTime created_at { get; set; }
+
+    public DateTime updated_at { get; set; }
+  }
+
+  public class GetClientGroupsResponse : IResponse
+  {
+    public long totalresults { get; set; }
+    public List<GetClientGroup> groups { get; set; }
+  }
+
+  public class GetClientGroup
+  {
+    public long id { get; set; }
+
+    public string groupname { get; set; }
+
+    public string groupcolour { get; set; }
+
+    public string discountpercent { get; set; }
+
+    public float? DiscountPercent
+      => string.IsNullOrEmpty(discountpercent) ? null : (float?) float.Parse(discountpercent.Replace('.', ','));
+
+    public string susptermexempt { get; set; }
+
+    public string separateinvoices { get; set; }
+  }
 }

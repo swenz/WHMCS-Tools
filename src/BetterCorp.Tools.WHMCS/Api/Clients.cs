@@ -103,7 +103,7 @@ namespace BetterCorp.Tools.WHMCS
       base.AddKeyValuePair(ref kp, "notes", notes, true);
       base.AddKeyValuePair(ref kp, "noemail", noemail, true);
       base.AddKeyValuePair(ref kp, "skipvalidation", skipvalidation, true);
-      
+
 
       return await base.CallOut<AddClientResponse>("AddClient", kp);
     }
@@ -150,7 +150,8 @@ namespace BetterCorp.Tools.WHMCS
       base.AddKeyValuePair(ref kp, "email", email, true);
       base.AddKeyValuePair(ref kp, "stats", false, true);
 
-      if (clientid == null && string.IsNullOrEmpty(email)) throw new ArgumentNullException("clientid or email is required");
+      if (clientid == null && string.IsNullOrEmpty(email))
+        throw new ArgumentNullException("clientid or email is required");
 
       return await base.CallOut<GetClientsDetailsResponse>("GetClientsDetails", kp);
     }
@@ -172,25 +173,163 @@ namespace BetterCorp.Tools.WHMCS
       base.AddKeyValuePair(ref kp, "email", email, true);
       base.AddKeyValuePair(ref kp, "stats", true, true);
 
-      if (clientid == null && string.IsNullOrEmpty(email)) throw new ArgumentNullException("clientid or email is required");
+      if (clientid == null && string.IsNullOrEmpty(email))
+        throw new ArgumentNullException("clientid or email is required");
 
       return await base.CallOut<GetClientsDetailsWithStatsResponse>("GetClientsDetails", kp);
     }
 
-
-    /*public async Task<AddContactResponse> AddContact(
+    /// <summary>
+    /// Adds a contact to a client account.
+    /// https://developers.whmcs.com/api-reference/addcontact/
+    /// </summary>
+    /// <param name="clientid">The ID of the client to add the contact to</param>
+    /// <param name="firstname"></param>
+    /// <param name="lastname"></param>
+    /// <param name="companyname"></param>
+    /// <param name="email">Email address to identify the contact. This should be unique if the contact will be a sub-account</param>
+    /// <param name="address1"></param>
+    /// <param name="address2"></param>
+    /// <param name="city"></param>
+    /// <param name="state"></param>
+    /// <param name="postcode"></param>
+    /// <param name="country">2 character ISO country code</param>
+    /// <param name="phonenumber"></param>
+    /// <param name="password">if creating a sub-account</param>
+    /// <param name="permissions">A comma separated list of sub-account permissions. eg manageproducts,managedomains</param>
+    /// <param name="generalemails">set true to receive general email types</param>
+    /// <param name="productemails">set true to receive product related emails</param>
+    /// <param name="domainemails">set true to receive domain related emails</param>
+    /// <param name="invoiceemails">set true to receive billing related emails</param>
+    /// <param name="supportemails">set true to receive support ticket related emails</param>
+    /// <returns></returns>
+    public async Task<BaseContactResponse> AddContact(
       long? clientid = null,
-      string email = null)
+      string firstname = null,
+      string lastname = null,
+      string companyname = null,
+      string email = null,
+      string address1 = null,
+      string address2 = null,
+      string city = null,
+      string state = null,
+      string postcode = null,
+      string country = null,
+      string phonenumber = null,
+      string password = null,
+      string permissions = null,
+      bool? generalemails = null,
+      bool? productemails = null,
+      bool? domainemails = null,
+      bool? invoiceemails = null,
+      bool? supportemails = null)
     {
       var kp = base.GetParamObject();
 
-      base.AddKeyValuePair(ref kp, "clientid", clientid, true);
+      base.AddKeyValuePair(ref kp, "clientid", clientid, false);
+
+      base.AddKeyValuePair(ref kp, "firstname", firstname, true);
+      base.AddKeyValuePair(ref kp, "lastname", lastname, true);
+      base.AddKeyValuePair(ref kp, "companyname", companyname, true);
       base.AddKeyValuePair(ref kp, "email", email, true);
-      base.AddKeyValuePair(ref kp, "stats", true, true);
+      base.AddKeyValuePair(ref kp, "address1", address1, true);
+      base.AddKeyValuePair(ref kp, "address2", address2, true);
+      base.AddKeyValuePair(ref kp, "city", city, true);
+      base.AddKeyValuePair(ref kp, "state", state, true);
+      base.AddKeyValuePair(ref kp, "postcode", postcode, true);
+      base.AddKeyValuePair(ref kp, "country", country, true);
+      base.AddKeyValuePair(ref kp, "phonenumber", phonenumber, true);
+      base.AddKeyValuePair(ref kp, "password2", password, true);
+      base.AddKeyValuePair(ref kp, "permissions", permissions, true);
+      base.AddKeyValuePair(ref kp, "generalemails", generalemails, true);
+      base.AddKeyValuePair(ref kp, "productemails", productemails, true);
+      base.AddKeyValuePair(ref kp, "domainemails", domainemails, true);
+      base.AddKeyValuePair(ref kp, "invoiceemails", invoiceemails, true);
+      base.AddKeyValuePair(ref kp, "supportemails", supportemails, true);
 
-      if (clientid == null && string.IsNullOrEmpty(email)) throw new ArgumentNullException("clientid or email is required");
+      return await base.CallOut<BaseContactResponse>("AddContact", kp);
+    }
 
-      return await base.CallOut<GetClientsDetailsWithStatsResponse>("AddContact", kp);
-    }*/
+    /// <summary>
+    /// Close a Client.
+    /// This will close the client, cancel any invoices and set the status of all products to Cancelled or Terminated.
+    /// https://developers.whmcs.com/api-reference/closeclient/
+    /// </summary>
+    /// <param name="clientid">The ID of the client to close</param>
+    /// <returns></returns>
+    public async Task<BaseClientResponse> CloseClient(
+      long? clientid = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "clientid", clientid, false);
+
+      return await base.CallOut<BaseClientResponse>("CloseClient", kp);
+    }
+
+    /// <summary>
+    /// Deletes a client.
+    /// Removes client record and all associated data. This action cannot be undone.
+    /// https://developers.whmcs.com/api-reference/deleteclient/
+    /// </summary>
+    /// <param name="clientid">The client id to be deleted</param>
+    /// <returns></returns>
+    public async Task<BaseClientResponse> DeleteClient(
+      long? clientid = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "clientid", clientid, false);
+
+      return await base.CallOut<BaseClientResponse>("DeleteClient", kp);
+    }
+
+    /// <summary>
+    /// Deletes a contact. 
+    /// Removes contact record. This action cannot be undone.
+    /// https://developers.whmcs.com/api-reference/deletecontact/
+    /// </summary>
+    /// <param name="contactid">The contact id to be deleted</param>
+    /// <returns></returns>
+    public async Task<BaseContactResponse> DeleteContact(
+      long? contactid = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "contactid", contactid, false);
+
+      return await base.CallOut<BaseContactResponse>("DeleteContact", kp);
+    }
+
+    /// <summary>
+    /// Obtain an array of cancellation requests
+    /// https://developers.whmcs.com/api-reference/getcancelledpackages/
+    /// </summary>
+    /// <param name="limitstart">The offset for the returned cancellation request data (default: 0)</param>
+    /// <param name="limitnum">The number of records to return (default: 25)</param>
+    /// <returns></returns>
+    public async Task<GetCancelledPackages> GetCancelledPackages(
+      long limitstart = 0,
+      long limitnum = 25)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "limitstart", limitstart, false);
+      base.AddKeyValuePair(ref kp, "limitnum", limitnum, false);
+
+      return await base.CallOut<GetCancelledPackages>("GetCancelledPackages", kp);
+    }
+
+    /// <summary>
+    /// Obtain an array of client groups
+    /// https://developers.whmcs.com/api-reference/getclientgroups/
+    /// </summary>
+    /// <returns></returns>
+    public async Task<GetClientGroupsResponse> GetClientGroups()
+    {
+      var kp = base.GetParamObject();
+
+      return await base.CallOut<GetClientGroupsResponse>("GetClientGroups", kp);
+    }
   }
 }
