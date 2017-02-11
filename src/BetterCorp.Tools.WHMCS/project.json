@@ -1,0 +1,46 @@
+{
+  "dependencies": {
+    "NETStandard.Library": "1.6.1",
+    "Newtonsoft.Json": "9.0.1"
+  },
+  "frameworks": {
+    "netcoreapp1.0": {},
+    "net45": {},
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    },
+    "netstandard1.3": {
+      "imports": "dnxcore50"
+    }
+  },
+  "buildOptions": {
+    "optimize": true
+  },
+
+  "version": "0.0.5-alpha",
+  "id": "BetterCorp.Tools.WHMCS",
+  "title": "WHMCS-Tools",
+  "description": "Simple Asynchronous WHMCS client for .NET.",
+  "copyright": "Copyright 2016-2017 (c) BetterCorp (PTY) Ltd. All rights reserved",
+  "authors": [
+    "BetterCorp"
+  ],
+
+  "packOptions": {
+    "owners": [
+      "BetterCorp"
+    ],
+    "authors": [
+      "BetterCorp"
+    ],
+    "tags": [ "api", "api-client", "api-wrapper", "bettercorp", "netcore", "tool", "whmcs" ],
+    "requireLicenseAcceptance": true,
+    "projectUrl": "https://github.com/BetterCorp/WHMCS-Tools",
+    "summary": "Simple Asynchronous WHMCS client for .NET.",
+    "licenseUrl": "https://github.com/BetterCorp/WHMCS-Tools/blob/master/LICENSE",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/BetterCorp/WHMCS-Tools"
+    }
+  }
+}
