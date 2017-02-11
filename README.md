@@ -1,7 +1,11 @@
 # WHMCS-Tools
 Simple Asynchronous WHMCS client for .NET
 
-Current Build Status: ![](https://nurci01.mrincops.net/TCStatIcon/BetterCorp_WhmcsTools)
+Current Stable Build Status: ![](https://nurci01.mrincops.net/TCPublished/BetterCorp/Whmcs-Tools/master-status)
+Current Stable Published Version: ![]https://nurci01.mrincops.net/TCPublished/BetterCorp/Whmcs-Tools/master)
+
+Current Development Build Status: ![](https://nurci01.mrincops.net/TCPublished/BetterCorp/Whmcs-Tools/develop-status)
+Current Development Published Version: ![]https://nurci01.mrincops.net/TCPublished/BetterCorp/Whmcs-Tools/develop)
 
 Example of how to get all clients:
 
