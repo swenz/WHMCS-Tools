@@ -37,10 +37,10 @@ namespace CoreTestApp
 
     public async void ClientDetailsP(long? clientId = null)
     {
-      GetClientsDetailsResponse clientInfo;
+      GetClientsDetailsWithStatsResponse clientInfo;
       if (clientId != null)
       {
-        clientInfo = await clients.GetClientsDetails(clientId);
+        clientInfo = await clients.GetClientsDetailsWithStats(clientId);
       }
       else
       {
@@ -48,7 +48,7 @@ namespace CoreTestApp
         long numVal = -1;
         var isNumber = long.TryParse(val, out numVal);
 
-        clientInfo = await clients.GetClientsDetails(isNumber ? (long?) numVal : null, isNumber ? null : val);
+        clientInfo = await clients.GetClientsDetailsWithStats(isNumber ? (long?) numVal : null, isNumber ? null : val);
       }
 
       if (clientInfo == null || !clientInfo.Success)
@@ -57,11 +57,16 @@ namespace CoreTestApp
         return;
       }
 
-      ResetPageHeader($"Client ({clientInfo.id}/{clientInfo.fullname}/{clientInfo.email})");
+      ResetPageHeader($"Client ({clientInfo.client.id}/{clientInfo.client.fullname}/{clientInfo.client.email})");
 
-      foreach (var prop in clientInfo.GetType().GetProperties().OrderBy(x => x.Name))
+      foreach (var prop in clientInfo.client.GetType().GetProperties().OrderBy(x => x.Name))
       {
-        Console.WriteLine(" {0, 25}: {1}", prop.Name, prop.GetValue(clientInfo, null).ToString());
+        Console.WriteLine(" {0, 25}: {1}", prop.Name, prop.GetValue(clientInfo.client, null)?.ToString());
+      }
+
+      foreach (var prop in clientInfo.stats.GetType().GetProperties().OrderBy(x => x.Name))
+      {
+        Console.WriteLine(" {0, 25}: {1}", prop.Name, prop.GetValue(clientInfo.stats, null)?.ToString());
       }
     }
 

@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CoreTestApp", "CoreTestApp\CoreTestApp.xproj", "{8C79A1D6-E626-4FF4-B671-1FA408D23859}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TESTNuget.CORE", "TESTNuget.CORE\TESTNuget.CORE.xproj", "{DC7FC5E9-1A15-4B0D-B7A6-46DA7CDB6CBC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +29,6 @@ Global
 		{8C79A1D6-E626-4FF4-B671-1FA408D23859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C79A1D6-E626-4FF4-B671-1FA408D23859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C79A1D6-E626-4FF4-B671-1FA408D23859}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC7FC5E9-1A15-4B0D-B7A6-46DA7CDB6CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC7FC5E9-1A15-4B0D-B7A6-46DA7CDB6CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC7FC5E9-1A15-4B0D-B7A6-46DA7CDB6CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC7FC5E9-1A15-4B0D-B7A6-46DA7CDB6CBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
