@@ -35,6 +35,7 @@
     ],
     "tags": [ "api", "api-client", "api-wrapper", "bettercorp", "netcore", "tool", "whmcs" ],
     "requireLicenseAcceptance": true,
+    "iconUrl": "https://raw.githubusercontent.com/BetterCorp/WHMCS-Tools/master/src/Icon/Icon.png",
     "projectUrl": "https://github.com/BetterCorp/WHMCS-Tools",
     "summary": "Simple Asynchronous WHMCS client for .NET.",
     "licenseUrl": "https://github.com/BetterCorp/WHMCS-Tools/blob/master/LICENSE",
