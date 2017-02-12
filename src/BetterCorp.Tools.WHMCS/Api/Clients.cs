@@ -375,5 +375,67 @@ namespace BetterCorp.Tools.WHMCS
 
       return await base.CallOut<GetClientsAddonsResponse>("GetClientsAddons", kp);
     }
+
+    /// <summary>
+    /// Obtain a list of Client Purchased Domains matching the provided criteria
+    /// https://developers.whmcs.com/api-reference/getclientsdomains/
+    /// </summary>
+    /// <param name="limitstart">The offset for the returned log data (default: 0)</param>
+    /// <param name="limitnum">The number of records to return (default: 25)</param>
+    /// <param name="clientid">The client id to obtain the details for.</param>
+    /// <param name="domainid">The specific domain id to obtain the details for</param>
+    /// <param name="domain">The specific domain to obtain the details for</param>
+    /// <returns></returns>
+    public async Task<GetClientsDomainsResponse> GetClientsDomains(
+      long limitstart = 0,
+      long limitnum = 25,
+      long? clientid = null,
+      long? domainid = null,
+      string domain = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "limitstart", limitstart, true);
+      base.AddKeyValuePair(ref kp, "limitnum", limitnum, true);
+      base.AddKeyValuePair(ref kp, "clientid", clientid, true);
+      base.AddKeyValuePair(ref kp, "domainid", domainid, true);
+      base.AddKeyValuePair(ref kp, "domain", domain, true);
+
+      return await base.CallOut<GetClientsDomainsResponse>("GetClientsDomains", kp);
+    }
+
+    /// <summary>
+    /// Obtain a list of Client Purchased Products matching the provided criteria
+    /// https://developers.whmcs.com/api-reference/getclientsproducts/
+    /// </summary>
+    /// <param name="limitstart">The offset for the returned log data (default: 0)</param>
+    /// <param name="limitnum">The number of records to return (default: 25)</param>
+    /// <param name="clientid">The client id to obtain the details for.</param>
+    /// <param name="serviceid">The specific service id to obtain the details for</param>
+    /// <param name="pid">The specific product id to obtain the details for</param>
+    /// <param name="domain">The specific domain to obtain the service details for</param>
+    /// <param name="username">The specific username to obtain the details for</param>
+    /// <returns></returns>
+    public async Task<GetClientsProductsResponse> GetClientsProducts(
+      long limitstart = 0,
+      long limitnum = 25,
+      long? clientid = null,
+      long? serviceid = null,
+      long? pid = null,
+      string domain = null,
+      string username = null)
+    {
+      var kp = base.GetParamObject();
+
+      base.AddKeyValuePair(ref kp, "limitstart", limitstart, true);
+      base.AddKeyValuePair(ref kp, "limitnum", limitnum, true);
+      base.AddKeyValuePair(ref kp, "clientid", clientid, true);
+      base.AddKeyValuePair(ref kp, "serviceid", serviceid, true);
+      base.AddKeyValuePair(ref kp, "pid", pid, true);
+      base.AddKeyValuePair(ref kp, "domain", domain, true);
+      base.AddKeyValuePair(ref kp, "username2", username, true);
+
+      return await base.CallOut<GetClientsProductsResponse>("GetClientsProducts", kp);
+    }
   }
 }
