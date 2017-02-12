@@ -11,15 +11,23 @@ Current Development Build Status: ![Dev Status](https://nurci01.mrincops.net/TCP
 Current Development Published Version: ![Dev Version](https://nurci01.mrincops.net/TCPublished/BetterCorp/Whmcs-Tools/develop.jpg?cc=1) 
  
  
-Example of how to get all clients:
+# Install the NuGet package 
 
-# Step 1 - define the API that you want to use
+```
+Install-Package BetterCorp.Tools.WHMCS
+``` 
+
+# Usage Example 
+
+## Step 1 - define the API that you want to use 
+
 ```
 var clientsApi = new BetterCorp.Tools.WHMCS.Clients();
 ```
 
-# Step 2 - setup the connection info
-# this can be done directly on the Api call as parameters but its more effective to use the ApiConnectionInfo class so that it can be passed into multiple Apis being used in the same class/app
+## Step 2 - setup the connection info
+`this can be done directly on the Api call as parameters but its more effective to use the ApiConnectionInfo class so that it can be passed into multiple Apis being used in the same class/app`
+
 ```
 var apiConnectionInfo = new ApiConnectionInfo()
 {
@@ -30,7 +38,8 @@ var apiConnectionInfo = new ApiConnectionInfo()
 clientsApi.SetConnection(apiConnectionInfo);
 ```
 
-# Call the api and write all the clients to the console !NOTE: This is Asynchronous :NOTE!
+## Call the api and write all the clients to the console !NOTE: This is Asynchronous :NOTE! 
+
 ```
 var clients = await clientsApi.GetClients();
 clients.clients.client.ForEach((Client client) =>
