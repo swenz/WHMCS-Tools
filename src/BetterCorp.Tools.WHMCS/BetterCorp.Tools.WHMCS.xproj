@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+
+  <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>f17802ba-422b-4041-b3dc-d6acfce8a057</ProjectGuid>
+    <RootNamespace>BetterCorp.Tools.WHMCS</RootNamespace>
+    <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
+    <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.targets" Condition="'$(VSToolsPath)' != ''" />
+  
+  <Target Name="BeforeBuild" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="powershell.exe &quot;If (Test-Path '$(OutputPath)Release') { rm -r '$(OutputPath)Release' }&quot;" />
+  </Target>
+  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+    <!-- <Exec Command="$(OutputPath)..\..\..\tools\nuget.exe pack $(OutputPath)..\..\..\deploy\BetterCorp.Tools.WHMCS.nuspec -BasePath $(OutputPath) -OutputDirectory $(OutputPath)" /> -->
+    <Exec Command="dotnet pack --no-build --configuration Release" />
+    <Exec Command="del &quot;$(OutputPath)Release\*.symbols.nupkg&quot; /Q" />
+    <Exec Command="powershell.exe &quot;If (Test-Path '.nugetapikey') {Invoke-Expression ('&amp; '+(Join-Path $pwd '..\..\tools\nuget.exe') + ' push ' + (Join-Path $pwd '.\bin\Release\*.nupkg') + ' -source https://api.nuget.org/v3/index.json -apikey ' + (Get-Content '.nugetapikey'))}&quot;" />
+  </Target>
+</Project>
