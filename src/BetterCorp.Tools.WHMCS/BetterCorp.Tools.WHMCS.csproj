@@ -6,7 +6,7 @@
     <AssemblyTitle>WHMCS-Tools</AssemblyTitle>
     <VersionPrefix>0.1.0</VersionPrefix>
     <Authors>BetterCorp</Authors>
-    <TargetFrameworks>netcoreapp1.0;net45;netstandard1.6;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.0;netstandard1.6;netstandard1.3</TargetFrameworks>
     <AssemblyName>BetterCorp.Tools.WHMCS</AssemblyName>
     <PackageId>BetterCorp.Tools.WHMCS</PackageId>
     <PackageTags>api;api-client;api-wrapper;bettercorp;netcore;tool;whmcs</PackageTags>
