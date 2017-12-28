@@ -1,4 +1,7 @@
-﻿namespace BetterCorp.Tools.WHMCS
+﻿using BetterCorp.Tools.WHMCS.Models;
+using System.Threading.Tasks;
+
+namespace BetterCorp.Tools.WHMCS
 {
   public class Orders : IApi
   {
@@ -16,17 +19,28 @@
     /// <returns>
     /// The result of the operation: success or error
     /// </returns>
-    public string AcceptOrder(
-      long orderid,
-      long? serverid,
+    public async Task<AcceptOrderResponse> AcceptOrderAsync(
+      int orderid,
+      int? serverid,
       string serviceusername,
       string servicepassword,
       string registrar,
       bool? sendregistrar,
       bool? autosetup,
       bool? sendemail)
-    {
-      return null;
-    }
+        {
+            var kp = base.GetParamObject();
+
+            base.AddKeyValuePair(ref kp, "orderid", orderid, false);
+            base.AddKeyValuePair(ref kp, "serverid", serverid, true);
+            base.AddKeyValuePair(ref kp, "serviceusername", serviceusername, true);
+            base.AddKeyValuePair(ref kp, "servicepassword", servicepassword, true);
+            base.AddKeyValuePair(ref kp, "registrar", registrar, true);
+            base.AddKeyValuePair(ref kp, "sendregistrar", sendregistrar, true);
+            base.AddKeyValuePair(ref kp, "autosetup", autosetup, true);
+            base.AddKeyValuePair(ref kp, "sendemail", sendemail, true);
+
+            return await base.CallOut<AcceptOrderResponse>("AcceptOrder", kp);
+        }
   }
 }
